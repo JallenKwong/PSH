@@ -1,0 +1,29 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+	
+	<h:head>
+		<title>Ajax Framework - Basic</title>
+	</h:head>
+	
+	<h:body>
+
+		<ui:include src="/ajaxcore/navigation.xhtml"/>
+		
+		<p>This example demonstrates a simple but common usage of posting the form, updating the backend value and displaying the output with ajax.
+		</p>
+		
+		<h:form>
+		    <h:panelGrid columns="4" cellpadding="5">
+		        <h:outputLabel for="name" value="Name:" style="font-weight:bold" />
+		        <p:inputText id="name" value="#{basicView.text}" />
+		        <p:commandButton value="Submit" update="display,display2" icon="ui-icon-check" />
+				<h:outputText id="display" value="#{basicView.text}" />
+		    </h:panelGrid>
+			<h:outputText id="display2" value="#{basicView.text}" />
+		    
+		</h:form>
+	</h:body>
+</html> 

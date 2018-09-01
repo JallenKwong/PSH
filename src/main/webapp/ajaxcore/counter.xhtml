@@ -1,0 +1,27 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Ajax Framework - Counter</title>
+</h:head>
+
+<h:body>
+
+	<ui:include src="/ajaxcore/navigation.xhtml"/>
+	
+	<p>An integer variable is incremented each time the button is clicked and current value is updated with ajax.</p>
+	
+	<h:form>
+		<h:panelGrid columns="2" cellpadding="5">
+			<h:outputText value="Counter: " />
+			<h:outputText id="output" value="#{counterView.number}" />
+		</h:panelGrid>
+
+		<p:commandButton value="Count"
+			actionListener="#{counterView.increment}" update="output" />
+	</h:form>
+</h:body>
+</html>

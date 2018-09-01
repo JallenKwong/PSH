@@ -1,0 +1,84 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+	
+	<h:head>
+		<title>The CRUD Example</title>
+	</h:head>
+	
+	<h:body>
+		<h:form>
+			<p:growl id="growl" showDetail="true" sticky="true" />  
+			
+			<p:dataTable id="customers" 
+        			var="i" 
+        			value="#{customerMB.customerList}" 
+        			style="width: 50%">
+				<p:column headerText="ID">
+                	#{i.id}
+	            </p:column>
+	            
+	            <p:column headerText="Name">
+	                #{i.name}
+	            </p:column>
+	            
+	            <p:column headerText="Surname">
+	                #{i.surname}
+	            </p:column>
+				
+				<p:column headerText="Operation">	            	
+	            	
+	            	<p:commandLink value="modify"
+	            				process="@this" 
+	            				update="@form:display"
+	            				actionListener="#{customerMB.preprocessCustomer(i)}" 
+	            				oncomplete="PF('display').show()"
+	            				/>
+	            	#{'		'}
+	            	<p:commandLink value="delete"
+	            				process="@this" 
+	            				update="@form:display,customers"
+	            				actionListener="#{customerMB.deleteCustomer(i)}" 
+	            				onclick="if(!confirm('Are You Sure?'))return false;"
+	            				/>		
+	            </p:column>
+			
+			</p:dataTable>
+		    
+		    <p:commandButton value="Create" 
+            				actionListener="#{customerMB.preprocessCustomer(null)}" 
+            				oncomplete="PF('display').show()"
+		    				process="@this" 
+		    				update="@form:display"/><!-- if you code like 'display' instead of '@form:display',
+		    											 it will throw exception told you it can't find id component -->
+		    
+		    <h:link outcome="/hello.xhtml" value="Back To Home"/>
+			
+			<p:dialog id="display"  header="Create Or Modify" widgetVar="display" 
+          			modal="true" closable="true" resizable="false" >
+				
+				<h:panelGrid columns="2" cellpadding="5">
+					<p:outputLabel for="name" value="name" />
+					<p:inputText id="name" value="#{customerMB.customer.name}" />
+					
+					<p:outputLabel for="surname" value="surname" />
+					<p:inputText id="surname" value="#{customerMB.customer.surname}" />
+					
+					<p:commandButton value="Confirm" 
+								process="display"
+								actionListener="#{customerMB.confirm}"
+								update="display,@form:customers"
+								oncomplete="if(#{customerMB.hide})PF('display').hide()"/>
+					<p:commandButton value="Cancel" 
+								process="@none" 
+								update="@none" 
+								oncomplete="PF('display').hide()"/>
+				</h:panelGrid>
+
+			</p:dialog>
+		
+		</h:form>
+	</h:body>
+</html> 

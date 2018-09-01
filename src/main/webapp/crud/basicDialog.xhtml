@@ -1,0 +1,28 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+	
+	<h:head>
+		<title>Ajax Framework - Basic Dialog</title>
+		<!-- Ajax and Dialog Usage -->
+	</h:head>
+	
+	<h:body>
+		<h:form>
+		    <h:panelGrid columns="4" cellpadding="5">
+		        <h:outputLabel for="name" value="Name:" style="font-weight:bold" />
+		        <p:inputText id="name" value="#{basicView.text}" />
+		        <p:commandButton value="Submit" update="display,display2" oncomplete="PF('dlg').show()" icon="ui-icon-check" />
+				<h:outputText id="display" value="#{basicView.text}" />
+		    </h:panelGrid>
+		    
+		    <p:dialog id="display2" header="hello" widgetVar="dlg" modal="true" resizable="false" >
+				<h:outputText value="#{basicView.text}" />
+			</p:dialog>
+		    
+		    
+		</h:form>
+	</h:body>
+</html> 

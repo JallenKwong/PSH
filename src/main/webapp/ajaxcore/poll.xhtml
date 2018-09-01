@@ -1,0 +1,22 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+	
+	<h:head>
+		<title>Ajax Framework - Poll</title>
+	</h:head>
+	
+	<h:body>
+		<ui:include src="/ajaxcore/navigation.xhtml"/>
+		
+		<p>Poll component makes ajax calls periodically.
+		</p>
+		
+		<h:form>
+		    <h:outputText id="txt_count" value="#{counterView.number}" />
+		    <p:poll interval="3" listener="#{counterView.increment}" update="txt_count" />
+		</h:form>
+	</h:body>
+</html> 

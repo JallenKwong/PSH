@@ -1,0 +1,31 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+	
+	<h:head>
+		<title>Ajax Framework - Events</title>
+	</h:head>
+	
+	<h:form>
+		<ui:include src="/ajaxcore/navigation.xhtml"/>
+		
+		<p>p:ajax enables ajax features on supported components.</p>
+		
+	    <h:panelGrid columns="3" cellpadding="5">
+	        <h:outputText value="KeyUp: " />
+	        <p:inputText id="firstname" value="#{userView.firstname}">
+	            <p:ajax event="keyup" update="out1" />
+	        </p:inputText>
+	        <h:outputText id="out1" value="#{userView.firstname}" />
+	 
+	        <h:outputText value="Blur: " />
+	        <p:inputText id="surname" value="#{userView.lastname}">
+	            <p:ajax event="blur" update="out2" />
+	        </p:inputText>
+	        <h:outputText id="out2" value="#{userView.lastname}" />
+	    </h:panelGrid>
+	</h:form>
+
+</html> 

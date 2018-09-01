@@ -1,0 +1,26 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+	
+	<h:head>
+		<title>Ajax Framework - Listener</title>
+	</h:head>
+	
+	<h:body>
+		<ui:include src="/ajaxcore/navigation.xhtml"/>
+		
+		<p>A java method can be invoked in an ajax request using listener option of p:ajax.</p>
+		
+		<h:form>
+		    <h:panelGrid columns="3">
+		        <h:outputText value="Keyup: " />
+		        <p:inputText id="counter" value="#{listenerView.text}">
+		            <p:ajax event="keyup" update="out" listener="#{listenerView.handleKeyEvent}" />
+		        </p:inputText>
+		        <h:outputText id="out" value="#{listenerView.text}" />
+		    </h:panelGrid>
+		</h:form>
+	</h:body>
+</html> 
