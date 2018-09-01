@@ -1,17 +1,17 @@
-# PrimeFaces + Spring + Hibernate 整合 #
+# PrimeFaces6 + Spring3 + Hibernate4 整合 #
 
-PrimeFaces + Spring + Hibernate 集合成为Web应用的好处在于它只需要尽可能少的xml配置或灵活的注解配置，另外PrimeFaces有大量开箱即用的视图组件，开发者只需将主要精力集中在业务逻辑上。
+PrimeFaces6 + Spring3 + Hibernate4 集合成为Web应用的好处在于它只需要尽可能少的xml配置或灵活的注解配置，另外PrimeFaces有大量开箱即用的视图组件，开发者只需将主要精力集中在业务逻辑上。
 
 我们将PrimeFaces作为UI框架，Spring用在应用的业务层，Hibernate用作数据连接层。最后通过一个CRUD的应用运行说明整合成功。
 
-# 0.准备要素 #
+## 0.准备要素 ##
 
 - Maven3
 - MySQL5.5
 - Tomcat7
 - Eclipse（可选）
 
-# 1.创建数据库和表 #
+## 1.创建数据库和表 ##
 
 在MySQL中创建数据库psh，并执行createTable.sql
 
@@ -22,7 +22,7 @@ PrimeFaces + Spring + Hibernate 集合成为Web应用的好处在于它只需要
 	  PRIMARY KEY (`id`)
 	) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
-# 2.利用Maven创建一个WAR工程 #
+## 2.利用Maven创建一个WAR工程 ##
 
 pom.xml如下
 
@@ -181,7 +181,7 @@ pom.xml如下
 	    
 	</project>
 
-# 3.创建WEB-INF/web.xml，配置加载Spring和JSF环境的监听器。 #
+## 3.创建WEB-INF/web.xml，配置加载Spring和JSF环境的监听器。 ##
 
 	<?xml version="1.0" encoding="UTF-8"?>
 	<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -247,7 +247,7 @@ pom.xml如下
 	    
 	</web-app>
 
-# 4.创建Spring配置文件WEB-INF/applicationContext.xml #
+## 4.创建Spring配置文件WEB-INF/applicationContext.xml ##
 
 配置数据源,Hibernate,事务的信息配置。
 
@@ -305,7 +305,7 @@ pom.xml如下
 	
 	</beans>
 
-# 5.创建WEB-INF/faces-config.xml #
+## 5.创建WEB-INF/faces-config.xml ##
 
 该配置文件主要用处主要整合Spring和Primefaces的托管Beans
 
@@ -321,7 +321,7 @@ pom.xml如下
 	    
 	</faces-config>
 
-# 6.创建一个领域实体和其数据连接层 #
+## 6.创建一个领域实体和其数据连接层 ##
 
 领域模型：
 
@@ -397,7 +397,7 @@ pom.xml如下
 	
 	}
 
-# 7.创建main.xhtml视图文件 #
+## 7.创建main.xhtml视图文件 ##
 
 	<html xmlns="http://www.w3.org/1999/xhtml"
 	      xmlns:h="http://java.sun.com/jsf/html"
@@ -484,16 +484,14 @@ pom.xml如下
 		</h:body>
 	</html>
 
-# 8.运行Web应用 #
+## 8.运行Web应用 ##
 
-将项目打包部署到Tomcat上运行,浏览器地址栏输入[http://localhost:8080/psh/crud/main.xhtml](http://localhost:8080/psh/crud/main.xhtml)
+将项目打包部署到Tomcat上运行,浏览器地址栏输入[http://localhost:8080/PSH/crud/main.xhtml](http://localhost:8080/PSH/crud/main.xhtml)
 
 ![](src/main/resources/CRUDExample.jpg)
 
 **参考文献**
 
-1.Primefaces + Spring + Hibernate Integration Example
-[https://javabeat.net/primefaces-spring-hibernate-integration-example/](https://javabeat.net/primefaces-spring-hibernate-integration-example/)
+[1.Primefaces + Spring + Hibernate Integration Example](https://javabeat.net/primefaces-spring-hibernate-integration-example/)
 
-2.PrimeFaces Showcase
-[https://www.primefaces.org/showcase/](https://www.primefaces.org/showcase/)
+[2.PrimeFaces Showcase](https://www.primefaces.org/showcase/)
